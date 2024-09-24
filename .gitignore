@@ -1,0 +1,8 @@
+# IDE's project files
+.idea/
+
+# Excluding .iml files
+/*.iml
+
+# Excluding out files
+out/*

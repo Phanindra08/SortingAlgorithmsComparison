@@ -1,5 +1,6 @@
 package edu.charlotte;
 
+import edu.charlotte.sorting_techniques.HeapSort;
 import edu.charlotte.sorting_techniques.InPlaceQuickSort;
 import edu.charlotte.sorting_techniques.InsertionSort;
 import edu.charlotte.sorting_techniques.MergeSort;
@@ -22,6 +23,7 @@ public class ReverseSortedInput {
         int[] inputArrayInDescendingOrder = Arrays.stream(inputArray).boxed().sorted(Collections.reverseOrder()).
                 mapToInt(Integer::intValue).toArray();
 
+        int[] inputArrayForHeapSort = Arrays.copyOf(inputArrayInDescendingOrder, sizeOfArray);
         int[] inputArrayForInsertionSort = Arrays.copyOf(inputArrayInDescendingOrder, sizeOfArray);
         int[] inputArrayForMergeSort = Arrays.copyOf(inputArrayInDescendingOrder, sizeOfArray);
         int[] inputArrayForInPlaceQuickSort = Arrays.copyOf(inputArrayInDescendingOrder, sizeOfArray);
@@ -59,5 +61,19 @@ public class ReverseSortedInput {
         executionTime = endTime - startTime;
         System.out.println("The time taken to sort array using In-Place Quick sort in nanoseconds is: " + executionTime);
         System.out.println("Checking the validity of In-Place Quick Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForInPlaceQuickSort))); //
+
+
+        HeapSort HeapSortObject = HeapSort.getInstance();
+        startTime = System.nanoTime();
+        System.out.println("*** HeapSort ***");
+        System.out.println("Original array is: " + Arrays.toString(inputArrayForHeapSort));
+        HeapSortObject.sort(inputArrayForHeapSort);
+        endTime = System.nanoTime();
+        System.out.println("Array after sorting is: " + Arrays.toString(inputArrayForHeapSort));
+        executionTime = endTime - startTime;
+        System.out.println("The time taken to sort array using Heap Sort in nanoseconds is: " + executionTime);
+        Arrays.sort(inputArray); //
+        System.out.println("Checking the validity of Heap Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForHeapSort))); //
+
     }
 }

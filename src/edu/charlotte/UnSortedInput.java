@@ -1,5 +1,6 @@
 package edu.charlotte;
 
+import edu.charlotte.sorting_techniques.InPlaceQuickSort;
 import edu.charlotte.sorting_techniques.InsertionSort;
 import edu.charlotte.sorting_techniques.MergeSort;
 import edu.charlotte.utils.SortingAlgorithmsUtilities;
@@ -20,6 +21,7 @@ public class UnSortedInput {
 
         int[] inputArrayForInsertionSort = Arrays.copyOf(inputArray, sizeOfArray);
         int[] inputArrayForMergeSort = Arrays.copyOf(inputArray, sizeOfArray);
+        int[] inputArrayForInPlaceQuickSort = Arrays.copyOf(inputArray, sizeOfArray);
 
         InsertionSort insertionSortObject = InsertionSort.getInstance();
         startTime = System.nanoTime();
@@ -30,15 +32,31 @@ public class UnSortedInput {
         System.out.println("Array after sorting is: " + Arrays.toString(inputArrayForInsertionSort));
         executionTime = endTime - startTime;
         System.out.println("The time taken to sort array using Insertion sort in nanoseconds is: " + executionTime);
+        Arrays.sort(inputArray); //
+        System.out.println("Checking the validity of Insertion Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForInsertionSort))); //
 
         MergeSort mergeSortObject = MergeSort.getInstance();
         startTime = System.nanoTime();
         System.out.println("*** Merge Sort ***");
         System.out.println("Original array is: " + Arrays.toString(inputArrayForMergeSort));
-        mergeSortObject.sort(inputArrayForMergeSort, 0, sizeOfArray-1);
+        mergeSortObject.sort(inputArrayForMergeSort, 0, sizeOfArray - 1);
         endTime = System.nanoTime();
         System.out.println("Array after sorting is: " + Arrays.toString(inputArrayForMergeSort));
         executionTime = endTime - startTime;
         System.out.println("The time taken to sort array using Merge sort in nanoseconds is: " + executionTime);
+        System.out.println("Checking the validity of Merge Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForMergeSort))); //
+
+        InPlaceQuickSort inPlaceQuickSortObject = InPlaceQuickSort.getInstance();
+        startTime = System.nanoTime();
+        System.out.println("*** In-Place Quick Sort ***");
+        System.out.println("Original array is: " + Arrays.toString(inputArrayForInPlaceQuickSort));
+        inPlaceQuickSortObject.sort(inputArrayForInPlaceQuickSort, 0, sizeOfArray - 1);
+        endTime = System.nanoTime();
+        System.out.println("Array after sorting is: " + Arrays.toString(inputArrayForInPlaceQuickSort));
+        executionTime = endTime - startTime;
+        System.out.println("The time taken to sort array using In-Place Quick sort in nanoseconds is: " + executionTime);
+        System.out.println("Checking the validity of In-Place Quick Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForInPlaceQuickSort))); //
+
+
     }
 }

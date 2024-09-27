@@ -15,9 +15,9 @@ public class InsertionSort {
 
     public void sort(int[] values) {
         for(int index = 0; index < values.length; index++) {
-            for(int j = index + 1; j < values.length; j++) {
-                if(values[index] > values[j])
-                    SortingAlgorithmsUtilities.swap(values, index, j);
+            for(int index2 = index + 1; index2 < values.length; index2++) {
+                if(values[index] > values[index2])
+                    SortingAlgorithmsUtilities.swap(values, index, index2);
             }
         }
     }

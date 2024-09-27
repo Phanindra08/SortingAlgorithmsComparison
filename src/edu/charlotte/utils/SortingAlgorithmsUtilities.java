@@ -17,6 +17,5 @@ public final class SortingAlgorithmsUtilities {
     public static void generateRandomValues(int[] arrayValues) {
         for(int index = 0; index < arrayValues.length; index++)
             arrayValues[index] = RANDOM_OBJECT.nextInt();
-//            arrayValues[index] = RANDOM_OBJECT.nextInt(arrayValues.length);
     }
 }

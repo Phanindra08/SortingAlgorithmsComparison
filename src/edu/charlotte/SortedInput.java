@@ -3,6 +3,7 @@ package edu.charlotte;
 import edu.charlotte.sorting_techniques.InPlaceQuickSort;
 import edu.charlotte.sorting_techniques.InsertionSort;
 import edu.charlotte.sorting_techniques.MergeSort;
+import edu.charlotte.sorting_techniques.ModifiedQuickSort;
 import edu.charlotte.utils.SortingAlgorithmsUtilities;
 
 import java.util.Arrays;
@@ -23,6 +24,7 @@ public class SortedInput {
         int[] inputArrayForInsertionSort = Arrays.copyOf(inputArray, sizeOfArray);
         int[] inputArrayForMergeSort = Arrays.copyOf(inputArray, sizeOfArray);
         int[] inputArrayForInPlaceQuickSort = Arrays.copyOf(inputArray, sizeOfArray);
+        int[] inputArrayForModifiedQuickSort = Arrays.copyOf(inputArray, sizeOfArray);
 
         InsertionSort insertionSortObject = InsertionSort.getInstance();
         startTime = System.nanoTime();
@@ -56,5 +58,16 @@ public class SortedInput {
         executionTime = endTime - startTime;
         System.out.println("The time taken to sort array using In-Place Quick sort in nanoseconds is: " + executionTime);
         System.out.println("Checking the validity of In-Place Quick Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForInPlaceQuickSort))); //
+
+        ModifiedQuickSort modifiedQuickSortObject = ModifiedQuickSort.getInstance();
+        startTime = System.nanoTime();
+        System.out.println("*** Modified Quick Sort ***");
+        System.out.println("Original array is: " + Arrays.toString(inputArrayForModifiedQuickSort));
+        modifiedQuickSortObject.sort(inputArrayForModifiedQuickSort, 0, sizeOfArray - 1);
+        endTime = System.nanoTime();
+        System.out.println("Array after sorting is: " + Arrays.toString(inputArrayForModifiedQuickSort));
+        executionTime = endTime - startTime;
+        System.out.println("The time taken to sort array using Modified Quick sort in nanoseconds is: " + executionTime);
+        System.out.println("Checking the validity of Modified Quick Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForModifiedQuickSort))); //
     }
 }

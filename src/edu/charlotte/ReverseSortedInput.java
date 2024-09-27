@@ -64,7 +64,6 @@ public class ReverseSortedInput {
         System.out.println("The time taken to sort array using In-Place Quick sort in nanoseconds is: " + executionTime);
         System.out.println("Checking the validity of In-Place Quick Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForInPlaceQuickSort))); //
 
-
         HeapSort HeapSortObject = HeapSort.getInstance();
         startTime = System.nanoTime();
         System.out.println("*** HeapSort ***");

@@ -1,5 +1,6 @@
 package edu.charlotte;
 
+import edu.charlotte.sorting_techniques.HeapSort;
 import edu.charlotte.sorting_techniques.InPlaceQuickSort;
 import edu.charlotte.sorting_techniques.InsertionSort;
 import edu.charlotte.sorting_techniques.MergeSort;
@@ -21,6 +22,7 @@ public class SortedInput {
         SortingAlgorithmsUtilities.generateRandomValues(inputArray);
         Arrays.sort(inputArray);
 
+        int[] inputArrayForHeapSort = Arrays.copyOf(inputArray, sizeOfArray);
         int[] inputArrayForInsertionSort = Arrays.copyOf(inputArray, sizeOfArray);
         int[] inputArrayForMergeSort = Arrays.copyOf(inputArray, sizeOfArray);
         int[] inputArrayForInPlaceQuickSort = Arrays.copyOf(inputArray, sizeOfArray);
@@ -69,5 +71,16 @@ public class SortedInput {
         executionTime = endTime - startTime;
         System.out.println("The time taken to sort array using Modified Quick sort in nanoseconds is: " + executionTime);
         System.out.println("Checking the validity of Modified Quick Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForModifiedQuickSort))); //
+
+        HeapSort HeapSortObject = HeapSort.getInstance();
+        startTime = System.nanoTime();
+        System.out.println("*** HeapSort ***");
+        System.out.println("Original array is: " + Arrays.toString(inputArrayForHeapSort));
+        HeapSortObject.sort(inputArrayForHeapSort);
+        endTime = System.nanoTime();
+        System.out.println("Array after sorting is: " + Arrays.toString(inputArrayForHeapSort));
+        executionTime = endTime - startTime;
+        System.out.println("The time taken to sort array using Heap sort in nanoseconds is: " + executionTime);
+        System.out.println("Checking the validity of HeapSort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForHeapSort))); //
     }
 }

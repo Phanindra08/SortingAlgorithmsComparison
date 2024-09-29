@@ -1,5 +1,6 @@
 package edu.charlotte;
 
+import edu.charlotte.sorting_techniques.HeapSort;
 import edu.charlotte.sorting_techniques.InPlaceQuickSort;
 import edu.charlotte.sorting_techniques.InsertionSort;
 import edu.charlotte.sorting_techniques.MergeSort;
@@ -9,6 +10,15 @@ import edu.charlotte.utils.SortingAlgorithmsUtilities;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * It is a driver class.
+ * It takes the size of the array as input from the user.
+ * It generates array randomly using Random class in Java and then sorts the array in ascending order using in-built sort method of the Arrays class in Java.
+ * It creates five duplicate copies of array and provides those as input to Insertion Sort, Merge Sort, Heap Sort, In-Place Quick Sort, and
+ * Modified Quick Sort.
+ * It measures the execution time of each sort.
+ * It also measures whether each of the sort are working as expected by comparing the result with the result of the in-built sort method of the Arrays class in Java.
+ */
 public class SortedInput {
     public static void main(String[] args) {
         long startTime, endTime, executionTime;
@@ -21,6 +31,7 @@ public class SortedInput {
         SortingAlgorithmsUtilities.generateRandomValues(inputArray);
         Arrays.sort(inputArray);
 
+        int[] inputArrayForHeapSort = Arrays.copyOf(inputArray, sizeOfArray);
         int[] inputArrayForInsertionSort = Arrays.copyOf(inputArray, sizeOfArray);
         int[] inputArrayForMergeSort = Arrays.copyOf(inputArray, sizeOfArray);
         int[] inputArrayForInPlaceQuickSort = Arrays.copyOf(inputArray, sizeOfArray);
@@ -69,5 +80,16 @@ public class SortedInput {
         executionTime = endTime - startTime;
         System.out.println("The time taken to sort array using Modified Quick sort in nanoseconds is: " + executionTime);
         System.out.println("Checking the validity of Modified Quick Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForModifiedQuickSort))); //
+
+        HeapSort HeapSortObject = HeapSort.getInstance();
+        startTime = System.nanoTime();
+        System.out.println("*** HeapSort ***");
+        System.out.println("Original array is: " + Arrays.toString(inputArrayForHeapSort));
+        HeapSortObject.sort(inputArrayForHeapSort);
+        endTime = System.nanoTime();
+        System.out.println("Array after sorting is: " + Arrays.toString(inputArrayForHeapSort));
+        executionTime = endTime - startTime;
+        System.out.println("The time taken to sort array using Heap sort in nanoseconds is: " + executionTime);
+        System.out.println("Checking the validity of HeapSort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForHeapSort))); //
     }
 }

@@ -2,10 +2,14 @@ package edu.charlotte.sorting_techniques;
 
 import java.util.Arrays;
 
+/**
+ * This class contains methods for sorting the array using Heap Sort.
+ * No one can create an object for this class. The class is designed using Singleton Design Pattern.
+ */
 public class HeapSort {
     private static HeapSort instance = null;
 
-    // Private constructor to ensure singleton pattern
+    // Private constructor to ensure Singleton pattern
     private HeapSort() {}
 
     // Method to get a single instance of HeapSort

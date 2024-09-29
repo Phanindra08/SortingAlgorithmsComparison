@@ -2,16 +2,36 @@ package edu.charlotte.sorting_techniques;
 
 import java.util.Arrays;
 
+/**
+ * This class contains various method for sorting the array using Merge Sort.
+ * No one can create an object for this class. The class is designed using Singleton Design Pattern.
+ *
+ * The documentation for the methods contained in this class includes brief descriptions of the implementations.
+ * Such descriptions should be regarded as implementation notes.
+ */
 public class MergeSort {
     private static MergeSort instance = null;
 
+    // Private constructor to ensure Singleton pattern
     private MergeSort() {}
+
+    // Method to get a single instance of MergeSort
     public static synchronized MergeSort getInstance() {
         if (instance == null)
             instance = new MergeSort();
         return instance;
     }
 
+    /**
+     * Method to perform Sorting.
+     * The algorithm works on the basis of divide and conquer rule.
+     * Calls the same method recursively as long as start index is less than end index.
+     * The method calls merge method to perform merging of two arrays.
+     *
+     * @param values the array to be sorted
+     * @param startPosition the starting index of the array
+     * @param endPosition the ending index of the array
+     */
     public void sort(int[] values,int startPosition, int endPosition) {
         if(startPosition < endPosition) {
             int middlePosition = (startPosition + endPosition) / 2;
@@ -21,6 +41,14 @@ public class MergeSort {
         }
     }
 
+    /**
+     * The merge method merges two arrays in sorted way.
+     *
+     * @param arrayValues the array to be sorted
+     * @param startPosition the starting index of the array
+     * @param middlePosition th middle index of the array
+     * @param endPosition the ending index of the array
+     */
     public void merge(int[] arrayValues, int startPosition, int middlePosition, int endPosition) {
         int sizeOfArrayLeft = middlePosition - startPosition + 1;
         int sizeOfArrayRight = endPosition - middlePosition;

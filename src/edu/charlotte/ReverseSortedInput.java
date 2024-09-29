@@ -11,6 +11,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * It is a driver class.
+ * It takes the size of the array as input from the user.
+ * It generates array randomly using Random class in Java and then sorts the array in descending order
+ * It creates five duplicate copies of array and provides those as input to Insertion Sort, Merge Sort, Heap Sort, In-Place Quick Sort, and
+ * Modified Quick Sort.
+ * It measures the execution time of each sort.
+ * It also measures whether each of the sort are working as expected by comparing the result with the result of the in-built sort method of the Arrays class in Java.
+ */
 public class ReverseSortedInput {
     public static void main(String[] args) {
         long startTime, endTime, executionTime;

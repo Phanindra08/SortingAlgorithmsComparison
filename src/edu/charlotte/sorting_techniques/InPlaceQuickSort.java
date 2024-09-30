@@ -2,6 +2,8 @@ package edu.charlotte.sorting_techniques;
 
 import edu.charlotte.utils.SortingAlgorithmsUtilities;
 
+import java.util.Random;
+
 /**
  * This class contains various method for sorting the array using In-Place Quick Sort.
  * No one can create an object for this class. The class is designed using Singleton Design Pattern.
@@ -11,6 +13,7 @@ import edu.charlotte.utils.SortingAlgorithmsUtilities;
  */
 public class InPlaceQuickSort {
     private static InPlaceQuickSort instance = null;
+    private static final Random RANDOM_OBJECT = new Random();
 
     // Private constructor to ensure Singleton pattern
     private InPlaceQuickSort() {}
@@ -34,7 +37,7 @@ public class InPlaceQuickSort {
      */
     public void sort(int[] arrayValues, int leftElementIndex, int rightElementIndex) {
         if(leftElementIndex < rightElementIndex) {
-            int pivotIndex = leftElementIndex;
+            int pivotIndex = RANDOM_OBJECT.nextInt(rightElementIndex - leftElementIndex + 1) + leftElementIndex;
             int newPivotIndex = inPlacePartition(arrayValues, leftElementIndex, rightElementIndex, pivotIndex);
             sort(arrayValues, leftElementIndex, newPivotIndex - 1);
             sort(arrayValues, newPivotIndex + 1, rightElementIndex);

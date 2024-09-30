@@ -82,7 +82,7 @@ public class UnSortedInput {
         endTime = System.nanoTime();
         executionTime = endTime - startTime;
         System.out.println("The time taken to sort array using In-Place Heap sort in nanoseconds is: " + executionTime);
-        System.out.println("Checking the validity of In-Place   Heap Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForHeapSort))); //
+        System.out.println("Checking the validity of In-Place Heap Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForHeapSort))); //
         listForExecutionTime.add(executionTime);
         System.out.println("Ending mainForUnSortedInput method in UnSortedInput Class.");
         return listForExecutionTime;

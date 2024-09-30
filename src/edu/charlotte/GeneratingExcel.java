@@ -20,9 +20,9 @@ public class GeneratingExcel {
             System.out.println("The size of the array for execution is: " + sizeOfArrayExecuting);
             HashMap<Integer, List<Long>> mapForExecutionTime = new HashMap<>();
             for (int numberOfTimesToRunTheCodesIndex = 0; numberOfTimesToRunTheCodesIndex < numberOfTimesToRunTheCodes; numberOfTimesToRunTheCodesIndex++) {
-//                mapForExecutionTime.put(numberOfTimesToRunTheCodesIndex + 1, UnSortedInput.mainForUnSortedInput(sizeOfArrayExecuting));
+                mapForExecutionTime.put(numberOfTimesToRunTheCodesIndex + 1, UnSortedInput.mainForUnSortedInput(sizeOfArrayExecuting));
 //                mapForExecutionTime.put(numberOfTimesToRunTheCodesIndex + 1, SortedInput.mainForSortedInput(sizeOfArrayExecuting));
-                mapForExecutionTime.put(numberOfTimesToRunTheCodesIndex + 1, ReverseSortedInput.mainForReverseSortedInput(sizeOfArrayExecuting));
+//                mapForExecutionTime.put(numberOfTimesToRunTheCodesIndex + 1, ReverseSortedInput.mainForReverseSortedInput(sizeOfArrayExecuting));
             }
             mapForGeneratingExcel.put(sizeOfArrayExecuting, mapForExecutionTime);
         }
@@ -30,9 +30,9 @@ public class GeneratingExcel {
         try {
             Workbook workbook = WorkbookFactory.create(false);
             // Creating a new sheet
-//            Sheet sheet = workbook.createSheet("UnSorted Input Data");
+            Sheet sheet = workbook.createSheet("UnSorted Input Data");
 //            Sheet sheet = workbook.createSheet("Sorted Input Data");
-            Sheet sheet = workbook.createSheet("Reverse Sorted Input Data");
+//            Sheet sheet = workbook.createSheet("Reverse Sorted Input Data");
 
             // Create header row
             Row headerRow = sheet.createRow(0);
@@ -67,9 +67,9 @@ public class GeneratingExcel {
             }
 
             // Write the output to a file
-//            try (FileOutputStream fileOut = new FileOutputStream("UnSortedInput.xlsx")) {
+            try (FileOutputStream fileOut = new FileOutputStream("UnSortedInput.xlsx")) {
 //            try (FileOutputStream fileOut = new FileOutputStream("SortedInput.xlsx")) {
-            try (FileOutputStream fileOut = new FileOutputStream("ReverseSortedInput.xlsx")) {
+//            try (FileOutputStream fileOut = new FileOutputStream("ReverseSortedInput.xlsx")) {
                 workbook.write(fileOut);
             } catch (IOException e) {
                 e.printStackTrace();

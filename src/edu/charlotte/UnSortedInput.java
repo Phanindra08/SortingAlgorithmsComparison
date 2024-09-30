@@ -90,6 +90,6 @@ public class UnSortedInput {
         System.out.println("Array after sorting is: " + Arrays.toString(inputArrayForHeapSort));
         executionTime = endTime - startTime;
         System.out.println("The time taken to sort array using In-Place Heap sort in nanoseconds is: " + executionTime);
-        System.out.println("Checking the validity of In-Place   Heap Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForHeapSort))); //
+        System.out.println("Checking the validity of In-Place Heap Sort: " + Arrays.toString(inputArray).equals(Arrays.toString(inputArrayForHeapSort))); //
     }
 }

@@ -1,7 +1,5 @@
 package edu.charlotte.sorting_techniques;
 
-import edu.charlotte.utils.SortingAlgorithmsUtilities;
-
 /**
  * This class contains method for sorting the array using In-Place Quick Sort.
  * No one can create an object for this class. The class is designed using Singleton Design Pattern.
@@ -25,18 +23,24 @@ public class InsertionSort {
 
     /**
      * Method to perform Sorting.
-     * Taking the elements of the array starting from the zeroth index and comparing the values with the other values to the right of the array
-     * till the last index of the array.
-     * If any element to the right of the array is less than the current value of the array then swap the elements with that index.
+     * Taking the elements of the array starting from the first index and comparing the values with the other values to the left of the array
+     * till the zeroth index of the array.
+     * If any element to the left of the array is greater than the current value of the array stored in a temporary variable then store that value to the next index of the array.
+     * Repeat this until the element to the left of the array is less than value in temporary variable and then store the value in the temporary variable to the next index of the array.
      *
      * @param values the array to be sorted
      */
     public void sort(int[] values) {
-        for(int index = 0; index < values.length; index++) {
-            for(int index2 = index + 1; index2 < values.length; index2++) {
-                if(values[index] > values[index2])
-                    SortingAlgorithmsUtilities.swap(values, index, index2);
+        int tempValue, index2;
+        for(int index = 1; index < values.length; index++) {
+            tempValue = values[index];
+            for(index2 = index - 1; index2 >= 0; index2--) {
+                if(values[index2] > tempValue)
+                    values[index2 + 1] = values[index2];
+                else
+                    break;
             }
+            values[index2 + 1] = tempValue;
         }
     }
 }

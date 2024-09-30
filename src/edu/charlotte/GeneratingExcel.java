@@ -9,9 +9,7 @@ import java.io.IOException;
 
 public class GeneratingExcel {
     public static void main(String[] args) {
-//        int[] arraySizesForExecution = new int[] {1000, 2000, 3000, 4000, 5000, 10000, 20000, 40000, 50000, 60000, 80000, 90000, 100000};
-        int[] arraySizesForExecution = new int[] {1000, 2000, 3000, 4000, 5000, 10000, 20000, 40000, 50000};
-//        int[] arraySizesForExecution = new int[]{1000, 2000};
+        int[] arraySizesForExecution = new int[] {1000, 2000, 3000, 4000, 5000, 10000, 20000, 40000, 50000, 60000, 80000, 90000, 100000};
         HashMap<Integer, HashMap<Integer, List<Long>>> mapForGeneratingExcel = new HashMap<>();
         Scanner scanningInput = new Scanner(System.in);
         System.out.print("Enter the number of times you want to run the codes with different random inputs: ");
@@ -19,18 +17,22 @@ public class GeneratingExcel {
         scanningInput.close();
 
         for (int sizeOfArrayExecuting : arraySizesForExecution) {
+            System.out.println("The size of the array for execution is: " + sizeOfArrayExecuting);
             HashMap<Integer, List<Long>> mapForExecutionTime = new HashMap<>();
             for (int numberOfTimesToRunTheCodesIndex = 0; numberOfTimesToRunTheCodesIndex < numberOfTimesToRunTheCodes; numberOfTimesToRunTheCodesIndex++) {
-                mapForExecutionTime.put(numberOfTimesToRunTheCodesIndex, UnSortedInput.mainForUnSortedInput(sizeOfArrayExecuting));
+//                mapForExecutionTime.put(numberOfTimesToRunTheCodesIndex + 1, UnSortedInput.mainForUnSortedInput(sizeOfArrayExecuting));
+//                mapForExecutionTime.put(numberOfTimesToRunTheCodesIndex + 1, SortedInput.mainForSortedInput(sizeOfArrayExecuting));
+                mapForExecutionTime.put(numberOfTimesToRunTheCodesIndex + 1, ReverseSortedInput.mainForReverseSortedInput(sizeOfArrayExecuting));
             }
             mapForGeneratingExcel.put(sizeOfArrayExecuting, mapForExecutionTime);
         }
 
         try {
-//        Workbook workbook = new XSSFWorkbook();
             Workbook workbook = WorkbookFactory.create(false);
             // Creating a new sheet
-            Sheet sheet = workbook.createSheet("UnSorting Input Data");
+//            Sheet sheet = workbook.createSheet("UnSorted Input Data");
+//            Sheet sheet = workbook.createSheet("Sorted Input Data");
+            Sheet sheet = workbook.createSheet("Reverse Sorted Input Data");
 
             // Create header row
             Row headerRow = sheet.createRow(0);
@@ -65,7 +67,9 @@ public class GeneratingExcel {
             }
 
             // Write the output to a file
-            try (FileOutputStream fileOut = new FileOutputStream("UnSortedInput.xlsx")) {
+//            try (FileOutputStream fileOut = new FileOutputStream("UnSortedInput.xlsx")) {
+//            try (FileOutputStream fileOut = new FileOutputStream("SortedInput.xlsx")) {
+            try (FileOutputStream fileOut = new FileOutputStream("ReverseSortedInput.xlsx")) {
                 workbook.write(fileOut);
             } catch (IOException e) {
                 e.printStackTrace();
